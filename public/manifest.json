@@ -1,0 +1,20 @@
+{
+    "dir": "ltr",
+    "lang": "en",
+    "name": "Buuntu ",
+    "scope": "/login",
+    "display": "fullscreen",
+    "start_url": "https://buuntu.com/login",
+    "short_name": "Buuntu",
+    "theme_color": "transparent",
+    "description": "buuntu",
+    "orientation": "any",
+    "background_color": "transparent",
+    "related_applications": [],
+    "prefer_related_applications": false,
+    "icons": [{
+    "src": "img/icon.png",
+    "sizes": "128x128",
+    "type": "image/png"
+  }]
+}
