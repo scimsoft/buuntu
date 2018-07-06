@@ -36,7 +36,7 @@ class ChatsController extends Controller
      */
     public function fetchMessages()
     {
-        return Message::with('user')->get()->reverse();
+        return Message::with('user')->get();
     }
 
     /**
