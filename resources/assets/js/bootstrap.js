@@ -46,3 +46,5 @@ window.Echo = new Echo({
     cluster: Laravel.pusherCluster,
     encrypted: true
 });
+
+import Pusher from 'pusher-js';
