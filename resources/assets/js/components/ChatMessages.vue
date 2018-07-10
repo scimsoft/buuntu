@@ -7,7 +7,7 @@
                         {{ message.user.name }}
                     </strong>
                 </div>
-                <p>
+                <p >
                     {{ message.message }}
                 </p>
             </div>
@@ -18,5 +18,6 @@
 <script>
 export default {
   props: ['messages']
+
 };
 </script>

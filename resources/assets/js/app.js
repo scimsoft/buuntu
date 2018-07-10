@@ -42,9 +42,11 @@ const app = new Vue({
             });
         },
         addMessage(message) {
+            //TODO confusion about message and text of message
             this.messages.unshift(message);
 
-            axios.post('/messages', message).then(response => {});
-        }
+            axios.post('/messages', {message: message.text,lat:message.lat,long:message.long}).then(response => {});
+        },
+
     }
 });

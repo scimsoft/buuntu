@@ -15,19 +15,42 @@
         props: ['user'],
 
         data() {
+
             return {
+                lat: '',
+                lng: '',
                 newMessage: ''
             }
+        },
+        mounted: function() {
+
+            this.getLocation
         },
 
         methods: {
             sendMessage() {
+                this.getLocation(),
+                    //TODO does not have geolocation here??
                 this.$emit('messagesent', {
                     user: this.user,
-                    message: this.newMessage
+                    text: this.newMessage,
+                    lat: this.lat,
+                    long: this.lng
                 });
 
                 this.newMessage = ''
+            },
+            getLocation() {
+                if (window.navigator.geolocation) {
+                    window.navigator.geolocation.getCurrentPosition(this.showPosition);
+                } else {
+                    text = "Geolocation is not supported by this browser.";
+                }
+            },
+            showPosition(position) {
+                this.lat = position.coords.latitude,
+                    this.lng = position.coords.longitude
+
             }
         }    
     }
