@@ -15,4 +15,4 @@ mix.js('resources/assets/js/app.js', __dirname +'public/js')
    .sass('resources/assets/sass/app.scss', __dirname +'public/css');
    */
 mix.js('resources/assets/js/app.js', 'public/js/app.js')
-    .sass('resources/assets/sass/app.scss', 'public/js/app.scss');
+    .sass('resources/assets/sass/app.scss', 'public/css/app.css');

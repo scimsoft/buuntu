@@ -28,7 +28,7 @@ const app = new Vue({
 
         Echo.private('chat')
             .listen('MessageSent', (e) => {
-                this.messages.push({
+                this.messages.unshift ({
                     message: e.message.message,
                     user: e.user
                 });
