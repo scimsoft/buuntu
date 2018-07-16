@@ -4,7 +4,7 @@
             <div class="chat-body clearfix">
                 <div class="header">
                     <strong class="primary-font" >
-                        {{ message.user.name }} -- ({{ getDistanceFromLatLonInKm( curlat,curlon,message.lat,message.long)}}km.)
+                        {{ message.user.name }} -- ({{ getDistanceFromLatLonInKm( message.lat,message.long)}}km.)
                     </strong>
                 </div>
                 <p >
@@ -39,13 +39,13 @@ export default {
 
 
 
-        getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+        getDistanceFromLatLonInKm( lat2, lon2) {
             var R = 6371; // Radius of the earth in km
-            var dLat = (lat2 - lat1)* (Math.PI / 180);  // deg2rad below
-            var dLon = (lon2 - lon1)* (Math.PI / 180);
+            var dLat = (lat2 - this.curlat)* (Math.PI / 180);  // deg2rad below
+            var dLon = (lon2 - this.curlon)* (Math.PI / 180);
             var a =
                 Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                Math.cos((lat1)* (Math.PI / 180)) * Math.cos(lat2* (Math.PI / 180)) *
+                Math.cos((this.curlat)* (Math.PI / 180)) * Math.cos(lat2* (Math.PI / 180)) *
                 Math.sin(dLon / 2) * Math.sin(dLon / 2)
             ;
             var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));

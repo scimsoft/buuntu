@@ -2028,11 +2028,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.curlon = position.coords.longitude;
         },
 
-        getDistanceFromLatLonInKm: function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+        getDistanceFromLatLonInKm: function getDistanceFromLatLonInKm(lat2, lon2) {
             var R = 6371; // Radius of the earth in km
-            var dLat = (lat2 - lat1) * (Math.PI / 180); // deg2rad below
-            var dLon = (lon2 - lon1) * (Math.PI / 180);
-            var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            var dLat = (lat2 - this.curlat) * (Math.PI / 180); // deg2rad below
+            var dLon = (lon2 - this.curlon) * (Math.PI / 180);
+            var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(this.curlat * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
             var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
             var d = R * c; // Distance in km
             return d.toFixed(1);
@@ -37496,7 +37496,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "header"
     }, [_c('strong', {
       staticClass: "primary-font"
-    }, [_vm._v("\n                    " + _vm._s(message.user.name) + " -- (" + _vm._s(_vm.getDistanceFromLatLonInKm(_vm.curlat, _vm.curlon, message.lat, message.long)) + "km.)\n                ")])]), _vm._v(" "), _c('p', [_vm._v("\n                " + _vm._s(message.message) + " //\n            ")])])])
+    }, [_vm._v("\n                    " + _vm._s(message.user.name) + " -- (" + _vm._s(_vm.getDistanceFromLatLonInKm(message.lat, message.long)) + "km.)\n                ")])]), _vm._v(" "), _c('p', [_vm._v("\n                " + _vm._s(message.message) + " //\n            ")])])])
   }))
 },staticRenderFns: []}
 module.exports.render._withStripped = true
