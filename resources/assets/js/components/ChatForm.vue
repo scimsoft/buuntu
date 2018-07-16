@@ -33,7 +33,7 @@
                     //TODO does not have geolocation here??
                 this.$emit('messagesent', {
                     user: this.user,
-                    text: this.newMessage,
+                    message: this.newMessage,
                     lat: this.lat,
                     long: this.lng
                 });

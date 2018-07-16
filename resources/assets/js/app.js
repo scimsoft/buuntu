@@ -45,8 +45,9 @@ const app = new Vue({
             //TODO confusion about message and text of message
             this.messages.unshift(message);
 
-            axios.post('/messages', {message: message.text,lat:message.lat,long:message.long}).then(response => {});
+            axios.post('/messages', {message: message.message,lat:message.lat,long:message.long}).then(response => {});
         },
+
 
     }
 });

@@ -1067,7 +1067,7 @@ var app = new Vue({
             //TODO confusion about message and text of message
             this.messages.unshift(message);
 
-            axios.post('/messages', { message: message.text, lat: message.lat, long: message.long }).then(function (response) {});
+            axios.post('/messages', { message: message.message, lat: message.lat, long: message.long }).then(function (response) {});
         }
     }
 });
@@ -1961,7 +1961,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //TODO does not have geolocation here??
             this.$emit('messagesent', {
                 user: this.user,
-                text: this.newMessage,
+                message: this.newMessage,
                 lat: this.lat,
                 long: this.lng
             });
@@ -2006,7 +2006,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['messages']
+    props: ['messages'],
+    data: {
+        error: '',
+        curlat: '',
+        curlon: ''
+    },
+    mounted: function mounted() {
+        this.myFunction();
+    },
+
+    methods: { myFunction: function myFunction() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(this.showPosition);
+            } else {
+                this.error = "Geolocation is not supported.";
+            }
+        },
+        showPosition: function showPosition(position) {
+            this.curlat = position.coords.latitude;
+            this.curlon = position.coords.longitude;
+        },
+
+        getDistanceFromLatLonInKm: function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+            var R = 6371; // Radius of the earth in km
+            var dLat = (lat2 - lat1) * (Math.PI / 180); // deg2rad below
+            var dLon = (lon2 - lon1) * (Math.PI / 180);
+            var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            var d = R * c; // Distance in km
+            return d.toFixed(1);
+        }
+    }
 
 });
 
@@ -37465,7 +37496,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "header"
     }, [_c('strong', {
       staticClass: "primary-font"
-    }, [_vm._v("\n                    " + _vm._s(message.user.name) + "\n                ")])]), _vm._v(" "), _c('p', [_vm._v("\n                " + _vm._s(message.message) + "\n            ")])])])
+    }, [_vm._v("\n                    " + _vm._s(message.user.name) + " -- (" + _vm._s(_vm.getDistanceFromLatLonInKm(_vm.curlat, _vm.curlon, message.lat, message.long)) + "km.)\n                ")])]), _vm._v(" "), _c('p', [_vm._v("\n                " + _vm._s(message.message) + " //\n            ")])])])
   }))
 },staticRenderFns: []}
 module.exports.render._withStripped = true
