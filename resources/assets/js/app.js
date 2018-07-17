@@ -47,6 +47,9 @@ const app = new Vue({
 
             axios.post('/messages', {message: message.message,lat:message.lat,long:message.long}).then(response => {});
         },
+        addBall(message){
+
+        },
 
 
     }

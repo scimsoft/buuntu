@@ -79,6 +79,9 @@
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
+                    <a class="navbar-brand" href="{{ url('/bubble') }}">
+                        {{ config('app.name2', 'Bubble') }}
+                    </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -124,5 +127,8 @@
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+    <!-- Scripts -->
+    <script src="/js/bubble.js"></script>
+
 </body>
 </html>

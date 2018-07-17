@@ -15,4 +15,6 @@ mix.js('resources/assets/js/app.js', __dirname +'public/js')
    .sass('resources/assets/sass/app.scss', __dirname +'public/css');
    */
 mix.js('resources/assets/js/app.js', 'public/js/app.js')
-    .sass('resources/assets/sass/app.scss', 'public/css/app.css');
+    .js('resources/assets/js/bubble.js', 'public/js/bubble.js')
+    .sass('resources/assets/sass/app.scss', 'public/css/app.css')
+    .sass('resources/assets/sass/bubble.scss', 'public/css/bubble.css');

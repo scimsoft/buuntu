@@ -23,8 +23,11 @@ export default {
         curlat:'',
         curlon:''
     },
-    mounted() { this.myFunction() },
-    methods: {myFunction: function () {
+    mounted:function() {
+      this.myFunction()
+        },
+    methods: {
+      myFunction: function () {
         if(navigator.geolocation){
             navigator.geolocation.getCurrentPosition(this.showPosition);
         }else{
@@ -50,7 +53,7 @@ export default {
             ;
             var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
             var d = R * c; // Distance in km
-            return d.toFixed(1);
+            return d.toFixed(3);
         },
 
     }

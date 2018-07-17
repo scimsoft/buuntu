@@ -24,12 +24,12 @@
         },
         mounted: function() {
 
-            this.getLocation
+            //this.getLocation()
         },
 
         methods: {
             sendMessage() {
-                this.getLocation(),
+                //this.getLocation(),
                     //TODO does not have geolocation here??
                 this.$emit('messagesent', {
                     user: this.user,
@@ -40,6 +40,7 @@
 
                 this.newMessage = ''
             },
+
             getLocation() {
                 if (window.navigator.geolocation) {
                     window.navigator.geolocation.getCurrentPosition(this.showPosition);
